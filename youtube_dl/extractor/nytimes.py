@@ -99,6 +99,43 @@ class NYTimesBaseIE(InfoExtractor):
             'thumbnails': thumbnails,
         }
 
+    def _extract_podcast_from_json(self, json, page_id, webpage):
+        audio_data = self._parse_json(json, page_id, transform_source=js_to_json)['data']
+        
+        description = audio_data['track'].get('description')
+        if not description:
+            description = self._html_search_meta(['og:description', 'twitter:description'], webpage)
+
+        episode_title = audio_data['track']['title']
+        episode_number = None
+        episode = audio_data['podcast']['episode'].split()
+        if episode:
+            episode_number = int_or_none(episode[-1])
+            video_id = episode[-1]
+        else:
+            video_id = page_id
+
+        podcast_title = audio_data['podcast']['title']
+        title = None
+        if podcast_title:
+            title = "%s: %s" % (podcast_title, episode_title)
+        else:
+            title = episode_title
+        
+        info_dict = {
+            'id': video_id,
+            'title': title,
+            'creator': audio_data['track'].get('credit'),
+            'series': podcast_title,
+            'episode': episode_title,
+            'episode_number': episode_number,
+            'url': audio_data['track']['source'],
+            'duration': audio_data['track'].get('duration'),
+            'description': description,
+        }
+        
+        return info_dict
+
 
 class NYTimesIE(NYTimesBaseIE):
     _VALID_URL = r'https?://(?:(?:www\.)?nytimes\.com/video/(?:[^/]+/)+?|graphics8\.nytimes\.com/bcvideo/\d+(?:\.\d+)?/iframe/embed\.html\?videoId=)(?P<id>\d+)'
