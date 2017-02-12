@@ -2194,11 +2194,7 @@ class InfoExtractor(object):
         return headers
 
     def _generic_id(self, url):
-        id = compat_urllib_parse_unquote(os.path.splitext(url.rstrip('/').split('/')[-1])[0])
-        # If our id matches a stopword, use the 2nd-to-last URL path component instead
-        if id in ['story']:
-            id = compat_urllib_parse_unquote(os.path.splitext(url.rstrip('/').split('/')[-2])[0])
-        return id
+        return compat_urllib_parse_unquote(os.path.splitext(url.rstrip('/').split('/')[-1])[0])
 
     def _generic_title(self, url):
         return compat_urllib_parse_unquote(os.path.splitext(url_basename(url))[0])
