@@ -451,7 +451,7 @@ class GenericIE(InfoExtractor):
             # Brightcove with metadata on one line
             'url': 'http://www.bostonglobe.com/metro/2017/02/11/tree-finally-succumbs-disease-leaving-hole-neighborhood/h1b4lviqzMTIn9sVy8F3gP/story.html?',
             'info_dict': {
-                'id': 'story',
+                'id': 'h1b4lviqzMTIn9sVy8F3gP',
                 'title': 'A tree finally succumbs to disease, leaving a hole in a neighborhood - The Boston Globe',
             },
             'playlist': [{
