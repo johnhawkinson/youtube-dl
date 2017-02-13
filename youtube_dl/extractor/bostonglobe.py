@@ -20,6 +20,7 @@ class BostonGlobeIE(InfoExtractor):
                 'title': 'A tree finally succumbs to disease, leaving a hole in a neighborhood - The Boston Globe',
             },
             'playlist': [{
+                'md5': '0a62181079c85c2d2b618c9a738aedaf',
                 'info_dict': {
                     'id': '5320421710001',
                     'ext': 'mp4',
