@@ -510,11 +510,11 @@ class BrightcoveNewIE(InfoExtractor):
                 'http://players.brightcove.net/%s/%s_%s/index.html?videoId=%s'
                 % (account_id, player_id, embed, video_id))
 
-        # 	<video data-brightcove-video-id="5320421710001" data-account="245991542" data-player="SJWAiyYWg" data-embed="default" class="video-js" controls itemscope itemtype="http://schema.org/VideoObject">
+        # 	<video data-video-id="5320421710001" data-account="245991542" data-player="SJWAiyYWg" data-embed="default" class="video-js" controls itemscope itemtype="http://schema.org/VideoObject">
         for video in re.findall(r'(?i)(<video[^>]+>)', webpage):
             attrs = extract_attributes(video)
                 
-            video_id    = dict_get(attrs, ['data-brightcove-video-id', 'data-video-id'])
+            video_id    = attrs.get('data-video-id')
             account_id  = attrs.get('data-account')
             player_id   = attrs.get('data-player')
             embed       = attrs.get('data-embed')
