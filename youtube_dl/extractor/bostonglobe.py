@@ -6,7 +6,6 @@ import re
 from .common import InfoExtractor
 
 from ..utils import (
-    dict_get,
     extract_attributes,
     orderedSet,
 )
@@ -58,7 +57,7 @@ class BostonGlobeIE(InfoExtractor):
         for video in re.findall(r'(?i)(<video[^>]+>)', webpage):
             attrs = extract_attributes(video)
 
-            video_id    = dict_get(attrs, ['data-brightcove-video-id', 'data-video-id'])
+            video_id    = attrs.get('data-brightcove-video-id')
             account_id  = attrs.get('data-account')
             player_id   = attrs.get('data-player')
             embed       = attrs.get('data-embed')
