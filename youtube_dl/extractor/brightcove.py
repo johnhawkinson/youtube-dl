@@ -16,9 +16,7 @@ from ..compat import (
 )
 from ..utils import (
     determine_ext,
-    dict_get,
     ExtractorError,
-    extract_attributes,
     find_xpath_attr,
     fix_xml_ampersands,
     float_or_none,
@@ -509,20 +507,6 @@ class BrightcoveNewIE(InfoExtractor):
             entries.append(
                 'http://players.brightcove.net/%s/%s_%s/index.html?videoId=%s'
                 % (account_id, player_id, embed, video_id))
-
-        # 	<video data-video-id="5320421710001" data-account="245991542" data-player="SJWAiyYWg" data-embed="default" class="video-js" controls itemscope itemtype="http://schema.org/VideoObject">
-        for video in re.findall(r'(?i)(<video[^>]+>)', webpage):
-            attrs = extract_attributes(video)
-                
-            video_id    = attrs.get('data-video-id')
-            account_id  = attrs.get('data-account')
-            player_id   = attrs.get('data-player')
-            embed       = attrs.get('data-embed')
-
-            if video_id and account_id and player_id and embed:
-                entries.append(
-                    'http://players.brightcove.net/%s/%s_%s/index.html?videoId=%s'
-                    % (account_id, player_id, embed, video_id))
 
         return entries
 
