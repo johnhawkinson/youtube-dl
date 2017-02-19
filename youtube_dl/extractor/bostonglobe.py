@@ -44,14 +44,6 @@ class BostonGlobeIE(InfoExtractor):
             r'(?s)<title>(.*?)</title>', webpage, 'video title',
             default='video')
 
-        # from generic.py
-        def _playlist_from_matches(matches, getter=None, ie=None):
-            urlrs = orderedSet(
-                self.url_result(self._proto_relative_url(getter(m) if getter else m), ie)
-                for m in matches)
-            return self.playlist_result(
-                urlrs, playlist_id=page_id, playlist_title=page_title)
-
         # 	<video data-brightcove-video-id="5320421710001" data-account="245991542" data-player="SJWAiyYWg" data-embed="default" class="video-js" controls itemscope itemtype="http://schema.org/VideoObject">
         entries = []
         for video in re.findall(r'(?i)(<video[^>]+>)', webpage):
@@ -67,4 +59,4 @@ class BostonGlobeIE(InfoExtractor):
                     'http://players.brightcove.net/%s/%s_%s/index.html?videoId=%s'
                     % (account_id, player_id, embed, video_id))
 
-        return _playlist_from_matches(entries, ie='BrightcoveNew')
+        return self.playlist_from_matches(entries, page_id, page_title, ie='BrightcoveNew')
