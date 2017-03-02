@@ -15,23 +15,18 @@ class BostonGlobeIE(InfoExtractor):
     _TEST = {
             'url': 'http://www.bostonglobe.com/metro/2017/02/11/tree-finally-succumbs-disease-leaving-hole-neighborhood/h1b4lviqzMTIn9sVy8F3gP/story.html',
             'info_dict': {
-                'id': 'h1b4lviqzMTIn9sVy8F3gP',
                 'title': 'A tree finally succumbs to disease, leaving a hole in a neighborhood - The Boston Globe',
+                'id': '5320421710001',
+                'ext': 'mp4',
+                'title': 'A tree finally succumbs to disease, leaving a hole in a neighborhood',
+                'description': 'It arrived as a sapling when the Back Bay was in its infancy, a spindly American elm tamped down into a square of dirt cut into the brick sidewalk of 1880s Marlborough Street, no higher than the first bay window of the new brownstone behind it.',
+                'timestamp': 1486877593,
+                'upload_date': '20170212',
+                'uploader_id': '245991542',
             },
-            'playlist': [{
-                'md5': '0a62181079c85c2d2b618c9a738aedaf',
-                'info_dict': {
-                    'id': '5320421710001',
-                    'ext': 'mp4',
-                    'title': 'A tree finally succumbs to disease, leaving a hole in a neighborhood',
-                    'description': 'It arrived as a sapling when the Back Bay was in its infancy, a spindly American elm tamped down into a square of dirt cut into the brick sidewalk of 1880s Marlborough Street, no higher than the first bay window of the new brownstone behind it.',
-                    'timestamp': 1486877593,
-                    'upload_date': '20170212',
-                    'uploader_id': '245991542',
-                },
-            }],
-            # HEAD requests produce 404 :(
-            'expected_warnings': ['404'],
+        'md5': '0a62181079c85c2d2b618c9a738aedaf',
+        # HEAD requests produce 404 :(
+        'expected_warnings': ['404'],
         }
 
     def _real_extract(self, url):
@@ -59,4 +54,9 @@ class BostonGlobeIE(InfoExtractor):
                     'http://players.brightcove.net/%s/%s_%s/index.html?videoId=%s'
                     % (account_id, player_id, embed, video_id))
 
-        return self.playlist_from_matches(entries, page_id, page_title, ie='BrightcoveNew')
+        if len(entries) == 0:
+            return self.url_result(url, 'Generic')
+        elif len(entries) == 1:
+            return self.url_result(entries[0], 'BrightcoveNew')
+        else:
+            return self.playlist_from_matches(entries, page_id, page_title, ie='BrightcoveNew')
