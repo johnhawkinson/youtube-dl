@@ -25,8 +25,6 @@ class BostonGlobeIE(InfoExtractor):
                 'uploader_id': '245991542',
             },
         'md5': '0a62181079c85c2d2b618c9a738aedaf',
-        # HEAD requests produce 404 :(
-        'expected_warnings': ['404'],
         }
 
     def _real_extract(self, url):
