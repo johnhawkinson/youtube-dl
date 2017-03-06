@@ -12,7 +12,8 @@ from ..utils import (
 
 class BostonGlobeIE(InfoExtractor):
     _VALID_URL = r'https?(?i)://(?:www\.)?bostonglobe\.com/.*/(?P<id>[^/]+)/\w+(?:\.html)?'
-    _TEST = {
+    _TESTS = [
+        {
             'url': 'http://www.bostonglobe.com/metro/2017/02/11/tree-finally-succumbs-disease-leaving-hole-neighborhood/h1b4lviqzMTIn9sVy8F3gP/story.html',
             'info_dict': {
                 'title': 'A tree finally succumbs to disease, leaving a hole in a neighborhood - The Boston Globe',
@@ -25,7 +26,22 @@ class BostonGlobeIE(InfoExtractor):
                 'uploader_id': '245991542',
             },
         'md5': '0a62181079c85c2d2b618c9a738aedaf',
-        }
+        },
+        {
+            'url': 'https://www.bostonglobe.com/lifestyle/names/2017/02/17/does-ben-affleck-play-matt-damon-favorite-version-batman/ruqkc9VxKBYmh5txn1XhSI/story.html',
+            'info_dict': {
+                'title': "Who Is Matt Damon's Favorite Batman?",
+                'id': 'ZW1QCnlA6Qc',
+                'ext': 'mp4',
+                'upload_date': '20170217',
+                'description': 'md5:3b3dccb9375867e0b4d527ed87d307cb',
+                'uploader': 'The Late Late Show with James Corden',
+                'uploader_id': 'TheLateLateShow',
+            },
+            'md5': '582b40327089d5c0c949b3c54b13c24b',
+            'expected_warnings': ['404'],
+        },
+        ]
 
     def _real_extract(self, url):
         page_id = self._match_id(url)
