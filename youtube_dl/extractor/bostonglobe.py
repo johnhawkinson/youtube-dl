@@ -31,12 +31,8 @@ class BostonGlobeIE(InfoExtractor):
         page_id = self._match_id(url)
         webpage = self._download_webpage(url, page_id)
 
-        # cribbed from generic.py
-        page_title = self._og_search_title(
-            webpage, default=None) or self._html_search_regex(
-            r'(?s)<title>(.*?)</title>', webpage, 'video title',
-            default='video')
-
+        page_title = self._og_search_title(webpage, default=None)
+        
         # 	<video data-brightcove-video-id="5320421710001" data-account="245991542" data-player="SJWAiyYWg" data-embed="default" class="video-js" controls itemscope itemtype="http://schema.org/VideoObject">
         entries = []
         for video in re.findall(r'(?i)(<video[^>]+>)', webpage):
