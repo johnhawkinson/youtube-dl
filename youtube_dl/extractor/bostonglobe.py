@@ -17,7 +17,7 @@ class BostonGlobeIE(InfoExtractor):
             'url': 'http://www.bostonglobe.com/metro/2017/02/11/tree-finally-succumbs-disease-leaving-hole-neighborhood/h1b4lviqzMTIn9sVy8F3gP/story.html',
             'md5': '0a62181079c85c2d2b618c9a738aedaf',
             'info_dict': {
-                'title': 'A tree finally succumbs to disease, leaving a hole in a neighborhood - The Boston Globe',
+                'title': 'A tree finally succumbs to disease, leaving a hole in a neighborhood',
                 'id': '5320421710001',
                 'ext': 'mp4',
                 'description': 'It arrived as a sapling when the Back Bay was in its infancy, a spindly American elm tamped down into a square of dirt cut into the brick sidewalk of 1880s Marlborough Street, no higher than the first bay window of the new brownstone behind it.',
