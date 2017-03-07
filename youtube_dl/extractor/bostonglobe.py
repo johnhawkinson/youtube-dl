@@ -28,7 +28,9 @@ class BostonGlobeIE(InfoExtractor):
         'md5': '0a62181079c85c2d2b618c9a738aedaf',
         },
         {
+            # Embedded youtube video; we hand it off to the Generic extractor.
             'url': 'https://www.bostonglobe.com/lifestyle/names/2017/02/17/does-ben-affleck-play-matt-damon-favorite-version-batman/ruqkc9VxKBYmh5txn1XhSI/story.html',
+            'md5': '582b40327089d5c0c949b3c54b13c24b',
             'info_dict': {
                 'title': "Who Is Matt Damon's Favorite Batman?",
                 'id': 'ZW1QCnlA6Qc',
@@ -38,7 +40,6 @@ class BostonGlobeIE(InfoExtractor):
                 'uploader': 'The Late Late Show with James Corden',
                 'uploader_id': 'TheLateLateShow',
             },
-            'md5': '582b40327089d5c0c949b3c54b13c24b',
             'expected_warnings': ['404'],
         },
         ]
