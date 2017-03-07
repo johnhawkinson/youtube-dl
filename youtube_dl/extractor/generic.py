@@ -2494,7 +2494,7 @@ class GenericIE(InfoExtractor):
         # Look for Rutube embeds
         rutube_urls = RutubeIE._extract_urls(webpage)
         if rutube_urls:
-            return _playlist_from_matches(
+            return self.playlist_from_matches(
                 rutube_urls, ie=RutubeIE.ie_key())
 
         # Looking for http://schema.org/VideoObject
