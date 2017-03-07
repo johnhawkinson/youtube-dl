@@ -15,6 +15,7 @@ class BostonGlobeIE(InfoExtractor):
     _TESTS = [
         {
             'url': 'http://www.bostonglobe.com/metro/2017/02/11/tree-finally-succumbs-disease-leaving-hole-neighborhood/h1b4lviqzMTIn9sVy8F3gP/story.html',
+            'md5': '0a62181079c85c2d2b618c9a738aedaf',
             'info_dict': {
                 'title': 'A tree finally succumbs to disease, leaving a hole in a neighborhood - The Boston Globe',
                 'id': '5320421710001',
@@ -24,7 +25,6 @@ class BostonGlobeIE(InfoExtractor):
                 'upload_date': '20170212',
                 'uploader_id': '245991542',
             },
-            'md5': '0a62181079c85c2d2b618c9a738aedaf',
         },
         {
             # Embedded youtube video; we hand it off to the Generic extractor.
