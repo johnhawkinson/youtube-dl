@@ -15,10 +15,11 @@ from ..compat import (
     compat_xml_parse_error,
 )
 from ..utils import (
-    determine_ext,
     ExtractorError,
-    float_or_none,
     HEADRequest,
+    UnsupportedError,
+    determine_ext,
+    float_or_none,
     is_html,
     js_to_json,
     orderedSet,
@@ -27,7 +28,6 @@ from ..utils import (
     unescapeHTML,
     unified_strdate,
     unsmuggle_url,
-    UnsupportedError,
     xpath_text,
 )
 from .commonprotocols import RtmpIE
