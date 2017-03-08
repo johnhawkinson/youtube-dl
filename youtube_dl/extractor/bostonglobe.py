@@ -11,7 +11,7 @@ from ..utils import (
 
 
 class BostonGlobeIE(InfoExtractor):
-    _VALID_URL = r'https?(?i)://(?:www\.)?bostonglobe\.com/.*/(?P<id>[^/]+)/\w+(?:\.html)?'
+    _VALID_URL = r'(?i)https?://(?:www\.)?bostonglobe\.com/.*/(?P<id>[^/]+)/\w+(?:\.html)?'
     _TESTS = [
         {
             'url': 'http://www.bostonglobe.com/metro/2017/02/11/tree-finally-succumbs-disease-leaving-hole-neighborhood/h1b4lviqzMTIn9sVy8F3gP/story.html',
