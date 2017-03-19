@@ -71,6 +71,14 @@ class TestDownload(unittest.TestCase):
 
     maxDiff = None
 
+    def __str__(self):
+        """Identify each test with the `add_ie` attribute, if available"""
+        add_ie = getattr(self, self._testMethodName).add_ie
+        if add_ie:
+            return "%s (%s) [%s]:" % (self._testMethodName, unittest.util.strclass(self.__class__), add_ie)
+        else:
+            return "%s (%s): " % (self._testMethodName, unittest.util.strclass(self.__class__))
+
     def setUp(self):
         self.defs = defs
 
@@ -233,6 +241,8 @@ for n, test_case in enumerate(defs):
         i += 1
     test_method = generator(test_case, tname)
     test_method.__name__ = str(tname)
+    ie_list = test_case.get('add_ie')
+    test_method.add_ie = ie_list and ",".join(ie_list)
     setattr(TestDownload, test_method.__name__, test_method)
     del test_method
 
