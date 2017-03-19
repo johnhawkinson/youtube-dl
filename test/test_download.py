@@ -73,11 +73,16 @@ class TestDownload(unittest.TestCase):
 
     def __str__(self):
         """Identify each test with the `add_ie` attribute, if available"""
+
+        def strclass(cls):
+            """From python2.7/unittest/util.py; in 2.6 it was _strclass so we cannot import it."""
+            return "%s.%s" % (cls.__module__, cls.__name__)
+
         add_ie = getattr(self, self._testMethodName).add_ie
         if add_ie:
-            return "%s (%s) [%s]:" % (self._testMethodName, unittest.util.strclass(self.__class__), add_ie)
+            return "%s (%s) [%s]:" % (self._testMethodName, strclass(self.__class__), add_ie)
         else:
-            return "%s (%s): " % (self._testMethodName, unittest.util.strclass(self.__class__))
+            return "%s (%s): " % (self._testMethodName, strclass(self.__class__))
 
     def setUp(self):
         self.defs = defs
