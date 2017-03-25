@@ -79,10 +79,9 @@ class TestDownload(unittest.TestCase):
             return '%s.%s' % (cls.__module__, cls.__name__)
 
         add_ie = getattr(self, self._testMethodName).add_ie
-        if add_ie:
-            return '%s (%s) [%s]:' % (self._testMethodName, strclass(self.__class__), add_ie)
-        else:
-            return '%s (%s): ' % (self._testMethodName, strclass(self.__class__))
+        return '%s (%s)%s:' % (self._testMethodName,
+                               strclass(self.__class__),
+                               ' [%s]' % add_ie if add_ie else '')
 
     def setUp(self):
         self.defs = defs
