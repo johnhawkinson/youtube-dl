@@ -72,17 +72,17 @@ class TestDownload(unittest.TestCase):
     maxDiff = None
 
     def __str__(self):
-        """Identify each test with the `add_ie` attribute, if available"""
+        """Identify each test with the `add_ie` attribute, if available."""
 
         def strclass(cls):
-            """From python2.7/unittest/util.py; in 2.6 it was _strclass so we cannot import it."""
-            return "%s.%s" % (cls.__module__, cls.__name__)
+            """From 2.7's unittest; 2.6 had _strclass so we can't import it."""
+            return '%s.%s' % (cls.__module__, cls.__name__)
 
         add_ie = getattr(self, self._testMethodName).add_ie
         if add_ie:
-            return "%s (%s) [%s]:" % (self._testMethodName, strclass(self.__class__), add_ie)
+            return '%s (%s) [%s]:' % (self._testMethodName, strclass(self.__class__), add_ie)
         else:
-            return "%s (%s): " % (self._testMethodName, strclass(self.__class__))
+            return '%s (%s): ' % (self._testMethodName, strclass(self.__class__))
 
     def setUp(self):
         self.defs = defs
@@ -247,7 +247,7 @@ for n, test_case in enumerate(defs):
     test_method = generator(test_case, tname)
     test_method.__name__ = str(tname)
     ie_list = test_case.get('add_ie')
-    test_method.add_ie = ie_list and ",".join(ie_list)
+    test_method.add_ie = ie_list and ','.join(ie_list)
     setattr(TestDownload, test_method.__name__, test_method)
     del test_method
 
