@@ -47,6 +47,7 @@ class FileDownloader(object):
     xattr_set_filesize: Set ytdl.filesize user xattribute with expected size.
     external_downloader_args:  A list of additional command-line arguments for the
                         external downloader.
+    ffmpeg_format:      Output format for the ffmpeg downloader to use
     hls_use_mpegts:     Use the mpegts container for HLS videos.
     http_chunk_size:    Size of a chunk for chunk-based HTTP downloading. May be
                         useful for bypassing bandwidth throttling imposed by
